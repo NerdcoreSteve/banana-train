@@ -3,10 +3,9 @@ const
     app = express()
 
 app.use(express.static('public'))  
-app.set('view engine', 'pug')
 
 app.get('/', function (req, res) {  
-    res.render('index')
+    res.sendFile(__dirname + '/index.html')
 })
 
 app.listen(3000, function () {  
