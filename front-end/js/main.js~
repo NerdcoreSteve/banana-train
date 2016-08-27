@@ -1,2 +1,0 @@
-const w = () => console.log('Hey guy!')
-w()
