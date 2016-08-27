@@ -1,13 +1,17 @@
 const
     express = require('express'),
-    app = express()
+    app = express(),
+    http = require('http').createServer(app)
+    io = require('socket.io')(http)
 
-app.use(express.static('public'))  
+app.use(express.static(__dirname + '/public'))  
 
-app.get('/', function (req, res) {  
-    res.sendFile(__dirname + '/index.html')
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'))
+
+io.on('connection', socket => {
+    io.emit('refresh page')
 })
 
-app.listen(3000, function () {  
-    console.log('Example app listening on port 3000!')
-})
+
+
+http.listen(3000, () => console.log('Example app listening on port 3000!'))
