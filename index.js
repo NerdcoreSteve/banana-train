@@ -12,6 +12,4 @@ io.on('connection', socket => {
     io.emit('refresh page')
 })
 
-
-
 http.listen(3000, () => console.log('Example app listening on port 3000!'))
